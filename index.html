@@ -57,9 +57,64 @@ body{font-size:17px;line-height:1.7}
 .contact-actions{min-width:min(100%,340px)}.contact-details{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px}.contact-detail{min-width:0;display:flex;flex-direction:column;gap:6px;padding:14px 16px;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-size:13px;line-height:1.45;overflow-wrap:anywhere;transition:border-color .2s,color .2s}.contact-detail:first-child{grid-column:1 / -1}.contact-detail:hover{border-color:var(--accent);color:var(--accent)}.contact-detail-label{font:10px var(--mono);letter-spacing:1px;color:var(--muted)}.contact-actions #share-button{border:1px solid var(--line);color:var(--text);background:transparent;font-size:12px;padding:10px 14px}.contact-actions #share-button:hover{border-color:var(--accent)}@media(max-width:370px){.contact-details{grid-template-columns:1fr}.contact-detail:first-child{grid-column:auto}}
 </style>
 <style>
-.hero-portrait{position:relative;margin:0;z-index:2;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#090b0d;box-shadow:0 28px 80px #0004;max-width:510px}.hero-portrait img{display:block;width:100%;height:clamp(340px,36vw,465px);object-fit:cover;object-position:center 35%}.hero-portrait figcaption{display:flex;justify-content:space-between;gap:10px;padding:14px 18px;background:var(--surface);color:var(--muted);font:10px var(--mono);letter-spacing:1px}.hero-portrait figcaption span:first-child{color:var(--accent)}.hero-visual>.code-window{display:none}.hero-visual .commit-badge{bottom:-14px;left:-22px}@media(max-width:700px){.hero-portrait{max-width:475px;margin:auto}.hero-portrait img{height:clamp(300px,90vw,420px)}.hero-portrait figcaption{font-size:9px}.hero-visual .commit-badge{left:0;bottom:-28px}}
+.hero-portrait, .about-section .portrait {
+  margin: 0 auto;
+  max-width: 420px;
+  background: transparent;
+  border: 0;
+  overflow: visible;
+}
+.about-section .portrait { max-width: 200px; margin: 28px 0 0; }
+.hero-portrait img, .about-section .portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+}
+.hero-portrait figcaption, .about-section .portrait figcaption {
+  padding: 14px 0 0;
+  text-align: center;
+  font: 0.875rem/1.5 var(--mono);
+  color: var(--muted);
+}
+.hero-portrait figcaption span { display: block; }
+.hero-portrait figcaption span:first-child { color: var(--accent); }
+.hero-visual > .code-window, .hero-visual > .commit-badge { display: none; }
+.achievement-photo {
+  height: clamp(305px, 32vw, 410px);
+  background: var(--surface-2);
+}
+.achievement-photo img { object-fit: contain; object-position: center; }
+.achievement-photo:has(img:not([hidden])) .photo-fallback { visibility: hidden; }
+.eyebrow, .section-label, .ribbon-label, .skill-group .mono,
+.project-category, .project-tags span, .project-footnote, .timeline-item .mono,
+.achievement-content .achievement-tag, .contact-detail-label, .hero-meta,
+.hero-bottom, .scroll-cue, .footer-inner p, .footer-inner .back-top, .footer-bottom,
+.journey-note, .preview-label, .dialog-label {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+.terminal-content p, .terminal-content input, .contact-detail,
+.project-detail-link, .achievement-photo .photo-caption,
+.terminal-prompt, .skills-heading p, .timeline-item .timeline-place {
+  font-size: 0.9375rem;
+}
+.project-info .description, .achievement-content > p:last-child,
+.timeline-item > p:last-child, .section-heading > p { font-size: 1rem; }
+.hero-meta, .hero-bottom { flex-wrap: wrap; }
+.hero-meta, .project-category, .project-footnote, .skill-group .mono,
+.footer-bottom, .achievement-photo .photo-caption { color: var(--muted); }
+.achievement-photo .photo-caption { color: white; }
+@media (max-width: 700px) {
+  .hero-portrait { width: min(82%, 330px); }
+  .about-section .portrait { max-width: 165px; }
+  .achievement-photo { height: clamp(325px, 99vw, 420px); }
+}
 </style>
-<style>.about-section .portrait{max-width:240px}.about-section .portrait img{height:185px;object-position:center 30%}@media(max-width:700px){.about-section .portrait{max-width:200px}.about-section .portrait img{height:155px}}</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Terus ke kandungan</a>
@@ -194,8 +249,8 @@ window.PORTFOLIO = {
     { type: 'PENEROKAAN TEKNIKAL', title: 'Membantu projek pengesanan objek', place: 'AI & computer vision', text: 'Pernah membantu pembangunan pengesanan objek menggunakan AI. Pengalaman awal untuk memahami penggunaan pengecaman corak pada input kamera.' }
   ],
   achievements: [
-    { title: '2nd ASEAN ITF Championship', text: 'Pemenang acara sparring dalam kejohanan taekwondo.', tag: 'TAEKWONDO · SPARRING', photo: 'https://chatgpt.com/api/library/files/libfile_dc95f460f9148191880b47586a7beed7/download', photoAlt: 'Harith bersama rakan memegang pingat kejohanan taekwondo.' },
-    { title: 'SSOTC Vol. II 2026', text: 'Pingat emas dan perak di Sabree Salleh Open Taekwondo Championship.', tag: 'TAEKWONDO · EMAS & PERAK', photo: 'https://chatgpt.com/api/library/files/libfile_e387787e9a888191b2147dbf4e11d932/download', photoAlt: 'Harith memegang pingat dan sijil selepas kejohanan SSOTC.' },
+    { title: '2nd ASEAN ITF Championship', text: 'Pemenang acara sparring dalam kejohanan taekwondo.', tag: 'TAEKWONDO · SPARRING', photo: './gmbr%20medal.jpeg', photoAlt: 'Harith bersama rakan memegang pingat kejohanan taekwondo.' },
+    { title: 'SSOTC Vol. II 2026', text: 'Pingat emas dan perak di Sabree Salleh Open Taekwondo Championship.', tag: 'TAEKWONDO · EMAS & PERAK', photo: './gmbr%20medal%202.jpeg', photoAlt: 'Harith memegang pingat dan sijil selepas kejohanan SSOTC.' },
     { title: 'Karnival Voktek 2023', text: 'Tempat ketiga dalam pertandingan pétanque.', tag: 'PÉTANQUE · TEMPAT KETIGA', photo: '', photoAlt: '' }
   ]
 };
